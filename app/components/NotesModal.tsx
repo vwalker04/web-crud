@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Note, NOTES_KEY } from "../page"
 import { Modal, Box, Typography, TextField, Button } from "@mui/material"
+import Grid from '@mui/material/Grid2'
 import { v4 as uuidv4 } from 'uuid'
 
 const NotesModal = ({ open, handleClose, setNotes }: { open: boolean, handleClose: () => void, setNotes: React.Dispatch<React.SetStateAction<Note[]>> }) => {
@@ -33,15 +34,29 @@ const NotesModal = ({ open, handleClose, setNotes }: { open: boolean, handleClos
         open={open}
         onClose={handleClose}
       >
-        <Box>
+        <Grid {...styles.container}>
           <Typography variant="h6">Add New Note</Typography>
           <TextField label="Title" value={title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} />
           <TextField label="Content" value={content} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setContent(e.target.value)} />
           <Button onClick={handleNewNote}>Add Note</Button>
-        </Box>
+        </Grid>
       </Modal>
     )
   }
 
   export default NotesModal
   
+  const styles = {
+    container: {
+        sx: {
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '20px',
+            backgroundColor: 'white',
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    }
+}

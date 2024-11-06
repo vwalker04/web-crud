@@ -1,8 +1,10 @@
 'use client'
 
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import Grid from '@mui/material/Grid2';
 import React, { useEffect, useState } from "react";
 import NotesModal from "./components/NotesModal";
+import Link from "next/link";
 
 
 export const NOTES_KEY = 'notes'
@@ -30,18 +32,40 @@ export default function Home() {
 
   return (
     <>
-      <div>
+      <Box {...styles.box}>
         {notes && notes.map((note, index) => {
           return (
-            <div key={index}>
-              <h6>{note.title}</h6>
-              <p>{note.content}</p>
-            </div>
+            <Grid container key={index} gap={2} {...styles.grid}>
+              <Typography>{note.title}</Typography>
+              <Typography>{note.content}</Typography>
+              <Link href={`/note/${note.id}`}><Button>Details</Button></Link>
+            </Grid>
           );
         })}
-      </div>
-      <Button onClick={() => setModalOpen(true)}>Add Note</Button>
-      <NotesModal open={modalOpen} handleClose={() => setModalOpen(false)} setNotes={setNotes}/>
+        <Button onClick={() => setModalOpen(true)}>Add Note</Button>
+      </Box>
+      <NotesModal
+        open={modalOpen}
+        handleClose={() => setModalOpen(false)}
+        setNotes={setNotes}
+      />
     </>
   );
+}
+
+const styles = {
+  box: {
+    sx: {
+      display: 'flex', 
+      flexDirection: 'column', 
+      justifyContent: 'center', 
+      alignItems: 'center'
+    }
+  },
+  grid: {
+    sx: {
+      display: 'flex',
+      alignItems: 'center'
+    }
+  }
 }
