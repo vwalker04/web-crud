@@ -35,16 +35,19 @@ export default function NoteDetails() {
     return (
         <>
             {note &&
-                <Grid>
-                    <Typography variant="h6">Note Details</Typography>
-                    <Typography>Note ID: {note.id}</Typography>
-                    <Typography>Note title: {note.title}</Typography>
-                    <Typography>Content: {note.content}</Typography>
-                    <Typography>Creted Timestamp: {note.createdTime}</Typography>
-                    <Button onClick={() => setOpenModal(true)}>Edit</Button>
-                    <Button onClick={handleDelete}>Delete</Button>
-                </Grid>}
-            <EditNotesModal open={openModal} handleClose={() => setOpenModal(false)} />
+                <>
+                    <Grid>
+                        <Typography variant="h6">Note Details</Typography>
+                        <Typography>Note ID: {note.id}</Typography>
+                        <Typography>Note title: {note.title}</Typography>
+                        <Typography>Content: {note.content}</Typography>
+                        <Typography>Creted Timestamp: {note.createdTime}</Typography>
+                        <Button onClick={() => setOpenModal(true)}>Edit</Button>
+                        <Button onClick={handleDelete}>Delete</Button>
+                    </Grid>
+                    <EditNotesModal open={openModal} handleClose={() => setOpenModal(false)} note={note} />
+                </>
+            }
         </>
     );
 };
