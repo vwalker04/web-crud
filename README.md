@@ -2,23 +2,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
-
+### Run the Dev server:
+Assuming you have a recent version of node installed you can run the dev server with: 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Continued Work
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I wanted to continue a bit further after my alotted time so I put changes on the **finish-up** branch. Adding Jest tests would be my next step before rounding out on the deploy step. However, normally I would test in parallel with development.
 
 ## Learn More
 
